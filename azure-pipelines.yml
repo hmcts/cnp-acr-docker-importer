@@ -13,7 +13,7 @@ pool:
 
 steps:
 - task: DockerInstaller@0
-  name: Install Docker CLI
+  name: 'Install Docker CLI'
   inputs:
     dockerVersion: '19.03.13'
 
@@ -22,4 +22,4 @@ steps:
     azureSubscription: $(serviceConnection)
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
-    inlineScript: az acr login --name $(acrName)
+    inlineScript: 'az acr login --name $(acrName)'
