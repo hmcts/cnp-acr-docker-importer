@@ -13,7 +13,7 @@ pool:
 
 steps:
 - task: DockerInstaller@0
-  name: 'Install Docker CLI'
+  displayName: 'Install DockerCLI'
   inputs:
     dockerVersion: '19.03.13'
 
