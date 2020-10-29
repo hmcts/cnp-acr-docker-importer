@@ -17,7 +17,6 @@ steps:
   inputs:
     dockerVersion: '19.03.13'
 
-- 
 - task: AzureCLI@2
   inputs:
     azureSubscription: $(serviceConnection)
