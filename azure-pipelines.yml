@@ -27,4 +27,4 @@ steps:
 - task: Bash@3
   inputs:
     targetType: 'inline'
-    script: 'docker pull image $(dockerImage)'
+    script: 'docker pull $(dockerImage)'
