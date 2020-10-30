@@ -27,18 +27,19 @@ steps:
     inlineScript: 'az acr login --name $(acrName)'
 
 - task: Bash@3
-  displayName: "Pull image"
+  displayName: "Pull the offical image"
   inputs:
     targetType: 'inline'
     script: 'docker pull $(dockerImage)'
 
-- task: Bash@4
-  displayName: "Tag image"
+- task: Bash@3
+  displayName: "Create an alias of the image"
   inputs:
     targetType: 'inline'
     script: 'docker tag $(dockerImage):$(dockerImageVersion) $(acrName)/base/$(dockerImage):$(dockerImageVersion)'
 
-- task: Bash@5
+- task: Bash@3
+  displayName: "Push the image to ACR"
   inputs:
     targetType: 'inline'
     script: 'docker push $(acrName)/base/$(dockerImage):$(dockerImageVersion)'
