@@ -6,7 +6,8 @@ variables:
   acrName: hmctssandbox 
   targetRegistry: hmctssandbox.azurecr.io
   serviceConnection: 'azurerm-sandbox'
-  dockerImage: 'postgres:11.9'
+  dockerImage: 'postgres'
+  dockerImageVersion: '11.9'
 
 pool:
   vmImage: 'Ubuntu 16.04'
@@ -18,6 +19,7 @@ steps:
     dockerVersion: '19.03.13'
 
 - task: AzureCLI@2
+  displayName: "Login to ACR"
   inputs:
     azureSubscription: $(serviceConnection)
     scriptType: 'bash'
@@ -25,6 +27,18 @@ steps:
     inlineScript: 'az acr login --name $(acrName)'
 
 - task: Bash@3
+  displayName: "Pull image"
   inputs:
     targetType: 'inline'
     script: 'docker pull $(dockerImage)'
+
+- task: Bash@4
+  displayName: "Tag image"
+  inputs:
+    targetType: 'inline'
+    script: 'docker tag $(dockerImage):$(dockerImageVersion) $(acrName)/base/$(dockerImage):$(dockerImageVersion)'
+
+- task: Bash@5
+  inputs:
+    targetType: 'inline'
+    script: 'docker push $(acrName)/base/$(dockerImage):$(dockerImageVersion)'
