@@ -1,6 +1,22 @@
-name: Copy Docker Public Images
+name: Push Docker Hub Public Images to ACR
+
+# Add below the image that you wish to add to the ACR
+strategy:
+  matrix:
+    postgres:
+      imageName: 'postgres'
+      version: '11.9'
+
 trigger:
 - master
+
+schedules:
+- cron: "0 0 * * *"
+  displayName: Daily midnight build
+  branches:
+    include:
+    - master
+  always: true
 
 variables:
   acrName: hmctssandbox 
@@ -9,12 +25,6 @@ variables:
 
 pool:
   vmImage: 'Ubuntu 16.04'
-
-strategy:
-  matrix:
-    postgres:
-      imageName: 'postgres'
-      version: '11.932423423'
 
 steps:
 - task: DockerInstaller@0
