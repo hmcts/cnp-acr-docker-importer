@@ -6,11 +6,15 @@ variables:
   acrName: hmctssandbox 
   targetRegistry: hmctssandbox.azurecr.io
   serviceConnection: 'azurerm-sandbox'
-  dockerImage: 'postgres'
-  dockerImageVersion: '11.9'
 
 pool:
   vmImage: 'Ubuntu 16.04'
+
+strategy:
+  matrix:
+    postgres:
+      imageName: 'postgres'
+      version: '11.9'
 
 steps:
 - task: DockerInstaller@0
@@ -30,16 +34,16 @@ steps:
   displayName: "Pull the official image"
   inputs:
     targetType: 'inline'
-    script: 'docker pull $(dockerImage):$(dockerImageVersion)'
+    script: 'docker pull $(imageName):$(version)'
 
 - task: Bash@3
   displayName: "Create an alias of the image"
   inputs:
     targetType: 'inline'
-    script: 'docker tag $(dockerImage):$(dockerImageVersion) $(targetRegistry)/base/$(dockerImage):$(dockerImageVersion)'
+    script: 'docker tag $(imageName):$(version) $(targetRegistry)/base/$(imageName):$(version)'
 
 - task: Bash@3
   displayName: "Push the image to ACR"
   inputs:
     targetType: 'inline'
-    script: 'docker push $(targetRegistry)/base/$(dockerImage):$(dockerImageVersion)'
+    script: 'docker push $(targetRegistry)/base/$(imageName):$(version)'
