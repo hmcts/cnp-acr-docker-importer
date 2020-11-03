@@ -14,7 +14,7 @@ strategy:
   matrix:
     postgres:
       imageName: 'postgres'
-      version: '11.9'
+      version: '11.932423423'
 
 steps:
 - task: DockerInstaller@0
