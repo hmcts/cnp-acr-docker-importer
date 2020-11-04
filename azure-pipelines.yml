@@ -50,7 +50,7 @@ steps:
   displayName: "Create an alias of the image"
   inputs:
     targetType: 'inline'
-    script: 'docker tag $(imageName):$(version) $(targetRegistry)/base/$(imageName):$(version)'
+    script: 'docker tag $(imageName):$(version) $(targetRegistry)/imported/$(imageName):$(version)'
 
 - task: Bash@3
   displayName: "Push the image to ACR"
