@@ -56,4 +56,4 @@ steps:
   displayName: "Push the image to ACR"
   inputs:
     targetType: 'inline'
-    script: 'docker push $(targetRegistry)/base/$(imageName):$(version)'
+    script: 'docker push $(targetRegistry)/imported/$(imageName):$(version)'
