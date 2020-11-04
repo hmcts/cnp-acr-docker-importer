@@ -19,9 +19,9 @@ schedules:
   always: true
 
 variables:
-  acrName: hmctssandbox 
-  targetRegistry: hmctssandbox.azurecr.io
-  serviceConnection: 'azurerm-sandbox'
+  acrName: hmctspublic 
+  targetRegistry: hmctspublic.azurecr.io
+  serviceConnection: 'azurerm-prod'
 
 pool:
   vmImage: 'Ubuntu 16.04'
