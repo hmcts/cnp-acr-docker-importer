@@ -6,6 +6,9 @@ strategy:
     postgres:
       imageName: 'postgres'
       version: '11.9'
+    postgres:
+      imageName: 'postgres'
+      version: '11.3.0'
     keycloak:
       imageName: 'jboss/keycloak'
       version: '11.0.3'
