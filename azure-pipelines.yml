@@ -6,7 +6,7 @@ strategy:
     postgres:
       imageName: 'postgres'
       version: '11.9'
-    postgres:
+    postgres11_3:
       imageName: 'postgres'
       version: '11.3'
     keycloak:
