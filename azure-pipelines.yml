@@ -7,7 +7,7 @@ strategy:
       imageName: 'postgres'
       version: '11.9'
     bitnami_postgres:
-      imageName: 'bitnami/postgres'
+      imageName: 'bitnami/postgresql'
       version: '11.3.0'
     keycloak:
       imageName: 'jboss/keycloak'
