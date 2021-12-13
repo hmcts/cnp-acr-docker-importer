@@ -12,9 +12,6 @@ strategy:
     keycloak:
       imageName: 'jboss/keycloak'
       version: '11.0.3'
-    logstash:
-      imageName: 'logstash'
-      version: '7.16.0'
 
 trigger:
 - master
