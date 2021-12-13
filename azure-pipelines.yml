@@ -54,7 +54,7 @@ steps:
   displayName: "Pull the official image"
   inputs:
     targetType: 'inline'
-    script: 'docker pull $(imageName):$(version)'
+    script: 'docker pull $(registry)$(imageName):$(version)'
 
 - task: Bash@3
   displayName: "Create an alias of the image"
