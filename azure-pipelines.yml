@@ -12,6 +12,10 @@ strategy:
     keycloak:
       imageName: 'jboss/keycloak'
       version: '11.0.3'
+    logstash:
+      registry: 'docker.elastic.co/'
+      imageName: 'logstash/logstash'
+      version: '7.16.1'
 
 trigger:
 - master
@@ -56,7 +60,7 @@ steps:
   displayName: "Create an alias of the image"
   inputs:
     targetType: 'inline'
-    script: 'docker tag $(imageName):$(version) $(targetRegistry)/imported/$(imageName):$(version)'
+    script: 'docker tag $(registry)$(imageName):$(version) $(targetRegistry)/imported/$(imageName):$(version)'
 
 - task: Bash@3
   displayName: "Push the image to ACR"
