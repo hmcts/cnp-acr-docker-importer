@@ -15,7 +15,7 @@ strategy:
     logstash:
       registry: 'docker.elastic.co/'
       imageName: 'logstash/logstash'
-      version: '7.16.1'
+      version: '7.17.3'
     curl:
       imageName: 'curlimages/curl'
       version: '7.85.0'
