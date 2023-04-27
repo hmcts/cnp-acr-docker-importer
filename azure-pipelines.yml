@@ -3,6 +3,22 @@ name: Push Docker Hub Public Images to ACR
 # Add below the image that you wish to add to the ACR
 strategy:
   matrix:
+    postgres:
+      imageName: 'postgres'
+      version: '11.9'
+    bitnami_postgres:
+      imageName: 'bitnami/postgresql'
+      version: '11.6.0'
+    keycloak:
+      imageName: 'jboss/keycloak'
+      version: '11.0.3'
+    logstash:
+      registry: 'docker.elastic.co/'
+      imageName: 'logstash/logstash'
+      version: '8.5.1'
+    curl:
+      imageName: 'curlimages/curl'
+      version: '7.85.0'
     ruby:
       imageName: 'library/ruby'
       version: '3.2.2-slim-buster'
