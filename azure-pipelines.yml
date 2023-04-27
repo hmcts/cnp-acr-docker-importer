@@ -19,6 +19,9 @@ strategy:
     curl:
       imageName: 'curlimages/curl'
       version: '7.85.0'
+    ruby:
+      imageName: 'library/ruby'
+      version: '3.2.2-slim-buster'
 
 trigger:
 - master
